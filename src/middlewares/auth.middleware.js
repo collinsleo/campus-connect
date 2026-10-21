@@ -49,6 +49,9 @@ exports.auth = async (req,res,next)=>{
 
     }catch(error){
         console.log(error.message);
+        return res.status(401).json({
+            message: `Bad request: ${error.message}`
+        })
     }
 }
 

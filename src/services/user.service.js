@@ -145,5 +145,7 @@ exports.updateUserStatus = async (userId, isActive, adminId) => {
         throw createError("User not found", 404);
     }
 
+    user.save();
+
     return user;
 };

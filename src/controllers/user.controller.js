@@ -144,14 +144,7 @@ exports.updateUserRole = async (req, res) => {
 // PATCH /api/users/:id/status
 exports.updateUserStatus = async (req, res) => {
     try {
-        const { isActive } = req.body;
-
-        if (typeof isActive !== "boolean") {
-            return res.status(400).json({
-                success: false,
-                message: "isActive must be a boolean",
-            });
-        }
+        const  isActive  = Boolean(req.body.isActive);
 
         const user = await userService.updateUserStatus(
             req.params.id,

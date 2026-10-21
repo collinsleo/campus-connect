@@ -16,10 +16,10 @@ router.get("/", auth, getUsers)
 router.get("/:id", auth, adminOnly,  getUserById)
 
 // PATCH /api/users/:id/role
-router.patch("/:id/role", auth, updateUserRole)
+router.patch("/:id/role", auth, adminOnly, updateUserRole)
 
 // PATCH /api/users/:id/status
-router.patch("/:id/role", auth, updateUserStatus)
+router.patch("/:id/status", auth, updateUserStatus)
 
 
 module.exports = router;
