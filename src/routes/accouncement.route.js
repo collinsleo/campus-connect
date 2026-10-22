@@ -10,7 +10,7 @@ const {
 } = require("../controllers/announcement.controller");
 
 const { auth } = require("../middlewares/auth.middleware");
-const { adminOnly } = require("../middlewares/admin.middleware");
+const { adminOnly } = require("../middlewares/role.middleware");
 
 const router = express.Router();
 

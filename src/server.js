@@ -6,6 +6,7 @@ const env =  require("dotenv"); env.config();
 const authRoutes = require("./routes/auth.route")
 const userRoute = require("./routes/user.route")
 const announcementsRoute = require("./routes/accouncement.route")
+const complaintRoute = require("./routes/complaint.route")
 const connectDb = require("./config/database.config");
 
 app.use(cors())
@@ -17,6 +18,7 @@ connectDb();
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoute)
 app.use("/api/announcements", announcementsRoute)
+app.use("/api/complaints", complaintRoute)
 
 
 const PORT = process.env.PORT || 7000;
