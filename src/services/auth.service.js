@@ -32,6 +32,11 @@ exports. loginUser = async (email, password )=>{
     if(!user){
         throw new Error("User not found")
     }
+
+    if(!user.isActive){
+        throw new Error ("cant't login Your account is suspended, please contact support")
+    }
+
     
     const passwordMatch = await bcrypt.compare(password, user.password)
 

@@ -58,7 +58,7 @@ exports.getUsers = async ({ page, limit, search }) => {
     const skip = (page - 1) * limit;
 
     const [users, totalUsers] = await Promise.all([
-        User.find(filter)
+        User.find(filter).select("-password")
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit),
@@ -107,7 +107,7 @@ exports.updateUserRole = async (userId, role, adminId) => {
             new: true,
             runValidators: true,
         }
-    );
+    ).select("-password");
 
     if (!user) {
         throw createError("User not found", 404);
@@ -139,7 +139,7 @@ exports.updateUserStatus = async (userId, isActive, adminId) => {
             new: true,
             runValidators: true,
         }
-    );
+    ).select("-password");
 
     if (!user) {
         throw createError("User not found", 404);

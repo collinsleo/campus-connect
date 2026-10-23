@@ -59,7 +59,6 @@ exports.getAllComplaints = async(req, res, next) => {
         message: "user no found"
       })
     }
-
     const result = await complaintService.getAllComplaints(req.query, user);
 
     res.status(200).json({
@@ -98,7 +97,6 @@ exports.updateComplaintStatus = async(req, res, next)=> {
     const user = req.user;
     const {status} = req.body
 
-  
     const complaint = await complaintService.updateComplaintStatus(
       req.params.id,
       status,
@@ -114,7 +112,7 @@ exports.updateComplaintStatus = async(req, res, next)=> {
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      message: "Error update my Complaint "
+      message: "Error update Complaint status "
     })
   }
 }

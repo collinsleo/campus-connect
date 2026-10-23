@@ -87,6 +87,7 @@ exports.getAnnouncementById = async (req, res, next) => {
     }
 };
 
+
 // PATCH /api/announcements/:id
 exports.updateAnnouncement = async (req, res, next) => {
     try {
@@ -160,7 +161,7 @@ exports.updateAnnouncement = async (req, res, next) => {
         });
 
     } catch (error) {
-        console.error(error.message);
+        console.error(error);
         return res.status(500).json({
             message:"Error Updating announcement"
         })

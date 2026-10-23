@@ -128,7 +128,13 @@ exports. updateComplaintStatus = async(
     throw new Error("Support officers can only update complaints assigned to them")
   }
 
-  complaint.Status = status;
+  const Status = {Status: status}
+
+
+ const announcement = await Complaint.findByIdAndUpdate(
+    complaintId,
+    { $set: {Status:status} },
+  )
   await complaint.save();
 
   return complaint;
@@ -196,3 +202,4 @@ exports.addComplaintResponse = async(
 
   return complaint;
 }
+
